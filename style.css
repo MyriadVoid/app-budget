@@ -6,8 +6,8 @@
 
   body {
     font-family: system-ui, sans-serif;
-    background-color: #f2f2f2;
-    color: #1a1a1a;
+    background-color: #000000;
+    color: #ffffff;
     padding: 16px;
     max-width: 480px;
     margin: 0 auto;
@@ -23,17 +23,17 @@
   }
 
   section {
-    background-color: #ffffff;
+    background-color: #1a1a1a;
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.08);
   }
 
   section h2 {
     font-size: 1rem;
     margin-bottom: 12px;
-    color: #555;
+    color: #bbbbbb;
   }
 
   #resume p {
@@ -43,7 +43,7 @@
   }
 
   #valeur-budget-jour {
-    color: #2e7d32;
+    color: #a78bfa;
     font-size: 1.2rem;
   }
 
@@ -52,14 +52,16 @@
     margin-top: 10px;
     margin-bottom: 4px;
     font-size: 0.9rem;
-    color: #555;
+    color: #bbbbbb;
   }
 
   input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444;
     border-radius: 8px;
   }
 
@@ -68,14 +70,14 @@
     padding: 12px;
     margin-top: 12px;
     font-size: 1rem;
-    background-color: #2e7d32;
+    background-color: #7c3aed;
     color: white;
     border: none;
     border-radius: 8px;
   }
 
   button:active {
-    background-color: #255f27;
+    background-color: #5b21b6;
   }
 
   #liste-depenses,
@@ -88,11 +90,11 @@
     display: flex;
     justify-content: space-between;
     padding: 6px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #333;
   }
 
   #resume h3 {
     font-size: 0.85rem;
-    color: #777;
+    color: #999999;
     margin-top: 8px;
   }
