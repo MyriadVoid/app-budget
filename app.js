@@ -124,5 +124,23 @@
     mettreAJourAffichage();
   });
 
+  document.getElementById("btn-ajuster-solde").addEventListener("click", () => {
+    const inputSolde = document.getElementById("input-solde-reel");
+    const soldeReel = parseFloat(inputSolde.value);
+
+    if (isNaN(soldeReel)) {
+      alert("Entre le solde affiché sur ton compte.");
+      return;
+    }
+
+    const correction = calculerReste() - soldeReel;
+    const dateStr = new Date().toLocaleDateString("fr-FR");
+    etat.depenses.push({ date: `Ajustement (${dateStr})`, montant: correction });
+
+    inputSolde.value = "";
+    sauvegarder();
+    mettreAJourAffichage();
+  });
+
   charger();
   mettreAJourAffichage();
