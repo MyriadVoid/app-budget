@@ -98,3 +98,20 @@
     color: #999999;
     margin-top: 8px;
   }
+
+  .depense-info {
+    display: flex;
+    gap: 12px;
+  }
+
+  .btn-supprimer {
+    width: auto;
+    margin-top: 0;
+    padding: 4px 10px;
+    font-size: 0.9rem;
+    background-color: #444;
+  }
+
+  .btn-supprimer:active {
+    background-color: #222;
+  }

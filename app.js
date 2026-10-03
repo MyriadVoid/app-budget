@@ -83,10 +83,25 @@
 
     const liste = document.getElementById("liste-depenses");
     liste.innerHTML = "";
-    etat.depenses.forEach(d => {
+    etat.depenses.forEach((d, index) => {
       const li = document.createElement("li");
-      li.innerHTML = `<span>${d.date}</span><span>${d.montant.toFixed(2)} €</span>`;
+      li.innerHTML = `
+        <div class="depense-info">
+          <span>${d.date}</span>
+          <span>${d.montant.toFixed(2)} €</span>
+        </div>
+        <button class="btn-supprimer" data-index="${index}">✕</button>
+      `;
       liste.appendChild(li);
+    });
+
+    document.querySelectorAll(".btn-supprimer").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const index = parseInt(btn.dataset.index);
+        etat.depenses.splice(index, 1);
+        sauvegarder();
+        mettreAJourAffichage();
+      });
     });
   }
 
