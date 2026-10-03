@@ -78,11 +78,14 @@
       .reduce((somme, d) => somme + d.montant, 0);
   }
 
-  function calculerBudgetJour() {
+  function calculerBudgetDebutJournee() {
     const resteDebutJournee = etat.salaire - totalCharges() - etat.epargne - totalDepensesAvantAujourdhui();
     const jours = joursRestants();
-    const budgetDebutJournee = resteDebutJournee / jours;
-    return budgetDebutJournee - totalDepensesAujourdhui();
+    return resteDebutJournee / jours;
+  }
+
+  function calculerBudgetJour() {
+    return calculerBudgetDebutJournee() - totalDepensesAujourdhui();
   }
 
   function mettreAJourAffichage() {
@@ -94,6 +97,9 @@
     const budgetJourEl = document.getElementById("valeur-budget-jour");
     budgetJourEl.textContent = budgetJour.toFixed(2);
     budgetJourEl.classList.toggle("negatif", budgetJour < 0);
+
+    document.getElementById("badge-budget-depart").textContent =
+      "Départ : " + calculerBudgetDebutJournee().toFixed(2) + " €";
 
     const listeCharges = document.getElementById("liste-charges");
     listeCharges.innerHTML = "";
