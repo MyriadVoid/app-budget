@@ -30,8 +30,8 @@
     <p><strong>Budget du jour : <span id="valeur-budget-jour">0</span> €</strong></p>
   </section>
 
-    <section id="saisie-mois">
-      <h2>Nouveau mois</h2>
+    <details id="saisie-mois">
+      <summary>Nouveau mois</summary>
       <label for="input-salaire">Salaire reçu</label>
       <input type="number" id="input-salaire" placeholder="ex: 2500">
 
@@ -39,7 +39,7 @@
       <input type="number" id="input-epargne" placeholder="ex: 300">
 
       <button id="btn-valider-mois">Valider le mois</button>
-    </section>
+    </details>
 
     <section id="depense-jour">
       <h2>Dépense d'aujourd'hui</h2>
@@ -47,12 +47,12 @@
       <button id="btn-ajouter-depense">Ajouter</button>
     </section>
 
-    <section id="ajustement">
-      <h2>Ajuster selon mon compte</h2>
+    <details id="ajustement">
+      <summary>Ajuster selon mon compte</summary>
       <label for="input-solde-reel">Solde réel sur mon compte</label>
       <input type="number" id="input-solde-reel" placeholder="ex: 430">
       <button id="btn-ajuster-solde">Ajuster</button>
-    </section>
+    </details>
 
     <section id="historique">
       <h2>Historique</h2>

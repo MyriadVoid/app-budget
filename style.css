@@ -22,7 +22,8 @@
     font-size: 1.5rem;
   }
 
-  section {
+  section,
+  details {
     background-color: #1a1a1a;
     border-radius: 12px;
     padding: 16px;
@@ -30,10 +31,33 @@
     box-shadow: 0 1px 3px rgba(255, 255, 255, 0.08);
   }
 
-  section h2 {
+  section h2,
+  summary {
     font-size: 1rem;
     margin-bottom: 12px;
     color: #bbbbbb;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: "▾";
+    float: right;
+  }
+
+  details[open] summary::after {
+    content: "▴";
+  }
+
+  details[open] summary {
+    margin-bottom: 12px;
   }
 
   #resume p {
@@ -118,6 +142,27 @@
 
   .btn-supprimer:active {
     background-color: #222;
+  }
+
+  #depense-jour {
+    border: 2px solid #7c3aed;
+    background-color: #241a33;
+    padding: 20px;
+  }
+
+  #depense-jour h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+  }
+
+  #depense-jour input {
+    font-size: 1.2rem;
+    padding: 14px;
+  }
+
+  #depense-jour button {
+    font-size: 1.1rem;
+    padding: 14px;
   }
 
   #badge-budget-depart {
