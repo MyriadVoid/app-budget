@@ -60,10 +60,29 @@
     return etat.charges.reduce((somme, c) => somme + c.montant, 0);
   }
 
+  function dateAujourdhuiStr() {
+    return new Date().toLocaleDateString("fr-FR");
+  }
+
+  function totalDepensesAujourdhui() {
+    const aujourdhui = dateAujourdhuiStr();
+    return etat.depenses
+      .filter(d => d.date === aujourdhui)
+      .reduce((somme, d) => somme + d.montant, 0);
+  }
+
+  function totalDepensesAvantAujourdhui() {
+    const aujourdhui = dateAujourdhuiStr();
+    return etat.depenses
+      .filter(d => d.date !== aujourdhui)
+      .reduce((somme, d) => somme + d.montant, 0);
+  }
+
   function calculerBudgetJour() {
-    const reste = calculerReste();
+    const resteDebutJournee = etat.salaire - totalCharges() - etat.epargne - totalDepensesAvantAujourdhui();
     const jours = joursRestants();
-    return reste / jours;
+    const budgetDebutJournee = resteDebutJournee / jours;
+    return budgetDebutJournee - totalDepensesAujourdhui();
   }
 
   function mettreAJourAffichage() {
@@ -71,7 +90,10 @@
     document.getElementById("valeur-charges").textContent = totalCharges().toFixed(2);
     document.getElementById("valeur-epargne").textContent = etat.epargne;
     document.getElementById("valeur-reste").textContent = calculerReste().toFixed(2);
-    document.getElementById("valeur-budget-jour").textContent = calculerBudgetJour().toFixed(2);
+    const budgetJour = calculerBudgetJour();
+    const budgetJourEl = document.getElementById("valeur-budget-jour");
+    budgetJourEl.textContent = budgetJour.toFixed(2);
+    budgetJourEl.classList.toggle("negatif", budgetJour < 0);
 
     const listeCharges = document.getElementById("liste-charges");
     listeCharges.innerHTML = "";

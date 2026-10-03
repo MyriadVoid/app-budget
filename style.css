@@ -47,6 +47,10 @@
     font-size: 1.2rem;
   }
 
+  #valeur-budget-jour.negatif {
+    color: #f87171;
+  }
+
   label {
     display: block;
     margin-top: 10px;
