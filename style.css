@@ -41,6 +41,7 @@
   summary {
     cursor: pointer;
     list-style: none;
+    display: block;
   }
 
   summary::-webkit-details-marker {
