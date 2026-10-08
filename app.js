@@ -114,7 +114,7 @@
 
     const badgeEl = document.getElementById("badge-budget-depart");
     if (modeBadge === "semaine") {
-      badgeEl.textContent = (budgetDebutJournee * 7).toFixed(2) + " CHF / sem.";
+      badgeEl.textContent = (budgetDebutJournee * 7).toFixed(2) + " CHF";
     } else {
       badgeEl.textContent = budgetDebutJournee.toFixed(2) + " CHF";
     }
