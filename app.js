@@ -309,6 +309,18 @@
     appliquerTheme();
   });
 
+  function appliquerPalette() {
+    const palette = localStorage.getItem("budget-palette") || "violet";
+    document.body.classList.toggle("theme-ocean", palette === "ocean");
+  }
+
+  document.getElementById("btn-couleur").addEventListener("click", () => {
+    const paletteActuelle = localStorage.getItem("budget-palette") || "violet";
+    const nouvellePalette = paletteActuelle === "violet" ? "ocean" : "violet";
+    localStorage.setItem("budget-palette", nouvellePalette);
+    appliquerPalette();
+  });
+
   document.getElementById("badge-budget-depart").addEventListener("click", () => {
     modeBadge = modeBadge === "jour" ? "semaine" : "jour";
     localStorage.setItem("budget-mode-badge", modeBadge);
@@ -316,5 +328,6 @@
   });
 
   appliquerTheme();
+  appliquerPalette();
   charger();
   mettreAJourAffichage();

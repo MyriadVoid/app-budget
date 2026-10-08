@@ -9,8 +9,13 @@
   --input-border: #444;
   --border-subtle: #333;
   --accent-card-bg: #241a33;
-  --gradient: linear-gradient(180deg, #7c3aed, #f97316, #ec4899);
-  --gradient-bordure: linear-gradient(180deg, #7c3aed, #ec4899, #f97316);
+  --accent-1: #7c3aed;
+  --accent-2: #f97316;
+  --accent-3: #ec4899;
+  --accent-1-rgb: 124, 58, 237;
+  --gradient: linear-gradient(180deg, var(--accent-1), var(--accent-2), var(--accent-3));
+  --gradient-diag: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  --gradient-bordure: linear-gradient(180deg, var(--accent-1), var(--accent-3), var(--accent-2));
 }
 
 body.light {
@@ -24,6 +29,17 @@ body.light {
   --input-border: #ccc;
   --border-subtle: #eee;
   --accent-card-bg: #f3e8ff;
+}
+
+body.theme-ocean {
+  --accent-card-bg: #16222e;
+  --accent-1: #7c3aed;
+  --accent-2: #3b82f6;
+  --accent-3: #14b8a6;
+}
+
+body.theme-ocean.light {
+  --accent-card-bg: #e0f2f6;
 }
 
 * {
@@ -53,7 +69,7 @@ body.light {
     display: inline-block;
     white-space: nowrap;
     padding-right: 0.15em;
-    background: linear-gradient(135deg, #7c3aed, #f97316);
+    background: var(--gradient-diag);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -172,7 +188,7 @@ body.light {
     white-space: nowrap;
     padding-right: 0.15em;
     font-size: 1.7rem;
-    background: linear-gradient(135deg, #7c3aed, #f97316);
+    background: var(--gradient-diag);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -213,13 +229,13 @@ body.light {
     margin-top: 12px;
     font-size: 1rem;
     background: var(--card-bg);
-    color: #7c3aed;
-    border: 2px solid #7c3aed;
+    color: var(--accent-1);
+    border: 2px solid var(--accent-1);
     border-radius: 8px;
   }
 
   button:active {
-    background: rgba(124, 58, 237, 0.15);
+    background: rgba(var(--accent-1-rgb), 0.15);
   }
 
   #liste-depenses,
@@ -303,7 +319,7 @@ body.light {
     position: fixed;
     top: 12px;
     right: 12px;
-    background: #7c3aed;
+    background: var(--accent-1);
     color: #ffffff;
     font-size: 0.75rem;
     font-weight: bold;
@@ -346,6 +362,21 @@ body.light {
     color: var(--text-color);
     border: 1px solid var(--input-border);
     padding: 8px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+
+  #btn-couleur {
+    position: fixed;
+    top: 12px;
+    left: 56px;
+    width: 34px;
+    height: 34px;
+    margin-top: 0;
+    padding: 0;
+    background: var(--gradient);
+    border: 1px solid var(--input-border);
     border-radius: 999px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     z-index: 100;
