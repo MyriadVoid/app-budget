@@ -1,7 +1,7 @@
  let etat = {
     salaire: 0,
     charges: [],
-    epargne: 0,
+    epargnes: [],
     depenses: []
   };
 
@@ -13,6 +13,11 @@
     const donnees = localStorage.getItem("budget-etat");
     if (donnees) {
       etat = JSON.parse(donnees);
+      if (!etat.epargnes) {
+        etat.epargnes = typeof etat.epargne === "number"
+          ? [{ date: "Avant mise à jour", montant: etat.epargne }]
+          : [];
+      }
     }
   }
 
@@ -45,11 +50,15 @@
   }
 
   function calculerReste() {
-    return etat.salaire - totalCharges() - etat.epargne - totalDepenses();
+    return etat.salaire - totalCharges() - totalEpargne() - totalDepenses();
   }
 
    function totalCharges() {
     return etat.charges.reduce((somme, c) => somme + c.montant, 0);
+  }
+
+  function totalEpargne() {
+    return etat.epargnes.reduce((somme, e) => somme + e.montant, 0);
   }
 
   function dateAujourdhuiStr() {
@@ -71,7 +80,7 @@
   }
 
   function calculerBudgetDebutJournee() {
-    const resteDebutJournee = etat.salaire - totalCharges() - etat.epargne - totalDepensesAvantAujourdhui();
+    const resteDebutJournee = etat.salaire - totalCharges() - totalEpargne() - totalDepensesAvantAujourdhui();
     const jours = joursRestants();
     return resteDebutJournee / jours;
   }
@@ -83,7 +92,7 @@
   function mettreAJourAffichage() {
     document.getElementById("valeur-salaire").textContent = etat.salaire;
     document.getElementById("valeur-charges").textContent = totalCharges().toFixed(2);
-    document.getElementById("valeur-epargne").textContent = etat.epargne;
+    document.getElementById("valeur-epargne").textContent = totalEpargne().toFixed(2);
     document.getElementById("valeur-reste").textContent = calculerReste().toFixed(2);
     const budgetJour = calculerBudgetJour();
     const budgetJourEl = document.getElementById("valeur-budget-jour");
@@ -91,7 +100,30 @@
     budgetJourEl.classList.toggle("negatif", budgetJour < 0);
 
     document.getElementById("badge-budget-depart").textContent =
-      "Départ : " + calculerBudgetDebutJournee().toFixed(2) + " CHF";
+      calculerBudgetDebutJournee().toFixed(2) + " CHF";
+
+    const listeEpargne = document.getElementById("liste-epargne");
+    listeEpargne.innerHTML = "";
+    etat.epargnes.forEach((e, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <div class="depense-info">
+          <span>${e.date}</span>
+          <span>${e.montant.toFixed(2)} CHF</span>
+        </div>
+        <button class="btn-supprimer-epargne" data-index="${index}">✕</button>
+      `;
+      listeEpargne.appendChild(li);
+    });
+
+    document.querySelectorAll(".btn-supprimer-epargne").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const index = parseInt(btn.dataset.index);
+        etat.epargnes.splice(index, 1);
+        sauvegarder();
+        mettreAJourAffichage();
+      });
+    });
 
     const listeCharges = document.getElementById("liste-charges");
     listeCharges.innerHTML = "";
@@ -150,10 +182,29 @@
       return;
     }
 
+    const dateStr = new Date().toLocaleDateString("fr-FR");
+
     etat.salaire = salaire;
-    etat.epargne = epargne;
+    etat.epargnes = [{ date: dateStr, montant: epargne }];
     etat.depenses = [];
 
+    sauvegarder();
+    mettreAJourAffichage();
+  });
+
+  document.getElementById("btn-ajouter-epargne").addEventListener("click", () => {
+    const inputMontant = document.getElementById("input-montant-epargne");
+    const montant = parseFloat(inputMontant.value);
+
+    if (isNaN(montant)) {
+      alert("Entre un montant valide.");
+      return;
+    }
+
+    const dateStr = new Date().toLocaleDateString("fr-FR");
+    etat.epargnes.push({ date: dateStr, montant });
+
+    inputMontant.value = "";
     sauvegarder();
     mettreAJourAffichage();
   });

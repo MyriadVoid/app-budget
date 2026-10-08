@@ -101,6 +101,45 @@ body.light {
     padding: 4px 0;
   }
 
+  #resume details {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+
+  #resume summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 0;
+    margin-bottom: 0;
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+
+  #resume summary::after {
+    content: none;
+  }
+
+  .valeur-avec-fleche {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .fleche {
+    display: inline-block;
+    font-size: 0.7rem;
+    color: var(--muted-color);
+    transition: transform 0.15s ease;
+  }
+
+  details[open] .fleche {
+    transform: rotate(180deg);
+  }
+
   #valeur-budget-jour {
     color: #a78bfa;
     font-size: 1.2rem;
@@ -144,22 +183,19 @@ body.light {
   }
 
   #liste-depenses,
-  #liste-charges {
+  #liste-charges,
+  #liste-epargne {
     list-style: none;
+    margin-top: 8px;
   }
 
   #liste-depenses li,
-  #liste-charges li {
+  #liste-charges li,
+  #liste-epargne li {
     display: flex;
     justify-content: space-between;
     padding: 6px 0;
     border-bottom: 1px solid var(--border-subtle);
-  }
-
-  #resume h3 {
-    font-size: 0.85rem;
-    color: var(--muted-color);
-    margin-top: 8px;
   }
 
   .depense-info {
@@ -168,7 +204,8 @@ body.light {
   }
 
   .btn-supprimer,
-  .btn-supprimer-charge {
+  .btn-supprimer-charge,
+  .btn-supprimer-epargne {
     width: auto;
     margin-top: 0;
     padding: 4px 10px;
@@ -227,6 +264,7 @@ body.light {
   }
 
   #gestion-charges,
+  #ajout-epargne,
   #saisie-mois,
   #ajustement,
   #historique {
