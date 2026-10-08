@@ -176,10 +176,24 @@ body.light {
   }
 
   #depense-jour {
-    border: 2px solid transparent;
-    border-image: var(--gradient) 1;
+    position: relative;
+    border: none;
+    border-radius: 16px;
     background-color: var(--accent-card-bg);
     padding: 20px;
+  }
+
+  #depense-jour::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: var(--gradient);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
 
   #depense-jour h2 {
@@ -214,7 +228,8 @@ body.light {
 
   #gestion-charges,
   #saisie-mois,
-  #ajustement {
+  #ajustement,
+  #historique {
     padding: 8px 16px;
   }
 
