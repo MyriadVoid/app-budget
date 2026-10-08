@@ -97,10 +97,12 @@
     return calculerBudgetDebutJournee() - totalDepensesAujourdhui();
   }
 
+  function calculerSemainesRestantes() {
+    return Math.ceil(joursRestants() / 7);
+  }
+
   function calculerBudgetSemaine() {
-    const projection = calculerBudgetDebutJournee() * 7;
-    const reste = calculerReste();
-    return Math.min(projection, reste);
+    return calculerReste() / calculerSemainesRestantes();
   }
 
   function mettreAJourAffichage() {
@@ -204,17 +206,16 @@
 
    document.getElementById("btn-valider-mois").addEventListener("click", () => {
     const salaire = parseFloat(document.getElementById("input-salaire").value);
+    const inputDateFin = document.getElementById("input-date-fin");
 
-    if (isNaN(salaire)) {
-      alert("Merci de remplir le salaire.");
+    if (isNaN(salaire) || !inputDateFin.value) {
+      alert("Merci de remplir le salaire et la date du prochain salaire.");
       return;
     }
 
-    const inputDateFin = document.getElementById("input-date-fin");
-
     etat.salaire = salaire;
     etat.depenses = [];
-    etat.dateFinCycle = inputDateFin.value || null;
+    etat.dateFinCycle = inputDateFin.value;
 
     sauvegarder();
     mettreAJourAffichage();
