@@ -5,6 +5,8 @@
     depenses: []
   };
 
+  let modeBadge = localStorage.getItem("budget-mode-badge") || "jour";
+
   function sauvegarder() {
     localStorage.setItem("budget-etat", JSON.stringify(etat));
   }
@@ -99,8 +101,13 @@
     budgetJourEl.textContent = budgetJour.toFixed(2);
     budgetJourEl.classList.toggle("negatif", budgetJour < 0);
 
-    document.getElementById("badge-budget-depart").textContent =
-      calculerBudgetDebutJournee().toFixed(2) + " CHF";
+    const budgetDebutJournee = calculerBudgetDebutJournee();
+    const badgeEl = document.getElementById("badge-budget-depart");
+    if (modeBadge === "semaine") {
+      badgeEl.textContent = (budgetDebutJournee * 7).toFixed(2) + " CHF / sem.";
+    } else {
+      badgeEl.textContent = budgetDebutJournee.toFixed(2) + " CHF";
+    }
 
     const listeEpargne = document.getElementById("liste-epargne");
     listeEpargne.innerHTML = "";
@@ -278,6 +285,12 @@
     const nouveauTheme = themeActuel === "sombre" ? "clair" : "sombre";
     localStorage.setItem("budget-theme", nouveauTheme);
     appliquerTheme();
+  });
+
+  document.getElementById("badge-budget-depart").addEventListener("click", () => {
+    modeBadge = modeBadge === "jour" ? "semaine" : "jour";
+    localStorage.setItem("budget-mode-badge", modeBadge);
+    mettreAJourAffichage();
   });
 
   appliquerTheme();
