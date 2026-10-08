@@ -198,17 +198,13 @@
 
    document.getElementById("btn-valider-mois").addEventListener("click", () => {
     const salaire = parseFloat(document.getElementById("input-salaire").value);
-    const epargne = parseFloat(document.getElementById("input-epargne").value);
 
-    if (isNaN(salaire) || isNaN(epargne)) {
-      alert("Merci de remplir le salaire et l'épargne.");
+    if (isNaN(salaire)) {
+      alert("Merci de remplir le salaire.");
       return;
     }
 
-    const dateStr = new Date().toLocaleDateString("fr-FR");
-
     etat.salaire = salaire;
-    etat.epargnes = [{ date: dateStr, montant: epargne }];
     etat.depenses = [];
 
     sauvegarder();

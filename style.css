@@ -51,6 +51,8 @@ body.light {
     font-weight: 700;
     font-size: 2.6rem;
     display: inline-block;
+    white-space: nowrap;
+    padding-right: 0.15em;
     background: linear-gradient(135deg, #7c3aed, #f97316);
     -webkit-background-clip: text;
     background-clip: text;
@@ -234,6 +236,8 @@ body.light {
 
   .depense-info {
     display: flex;
+    justify-content: space-between;
+    flex: 1;
     gap: 12px;
   }
 
