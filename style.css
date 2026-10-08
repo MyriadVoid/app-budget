@@ -47,7 +47,9 @@ body.light {
   }
 
   header h1 {
-    font-size: 1.5rem;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.6rem;
     display: inline-block;
     background: linear-gradient(135deg, #7c3aed, #f97316);
     -webkit-background-clip: text;
@@ -98,7 +100,7 @@ body.light {
   #resume p {
     display: flex;
     justify-content: space-between;
-    padding: 4px 0;
+    padding: 4px 20px 4px 0;
   }
 
   #resume details {
@@ -110,10 +112,11 @@ body.light {
   }
 
   #resume summary {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 0;
+    padding: 4px 20px 4px 0;
     margin-bottom: 0;
     color: var(--text-color);
     font-size: 1rem;
@@ -130,6 +133,10 @@ body.light {
   }
 
   .fleche {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
     display: inline-block;
     font-size: 0.7rem;
     color: var(--muted-color);
@@ -137,7 +144,7 @@ body.light {
   }
 
   details[open] .fleche {
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
   }
 
   #valeur-budget-jour {
@@ -208,8 +215,8 @@ body.light {
   .btn-supprimer-epargne {
     width: auto;
     margin-top: 0;
-    padding: 4px 10px;
-    font-size: 0.9rem;
+    padding: 2px 6px;
+    font-size: 0.7rem;
   }
 
   #depense-jour {
