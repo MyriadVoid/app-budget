@@ -91,7 +91,7 @@
     budgetJourEl.classList.toggle("negatif", budgetJour < 0);
 
     document.getElementById("badge-budget-depart").textContent =
-      "Départ : " + calculerBudgetDebutJournee().toFixed(2) + " €";
+      "Départ : " + calculerBudgetDebutJournee().toFixed(2) + " CHF";
 
     const listeCharges = document.getElementById("liste-charges");
     listeCharges.innerHTML = "";
@@ -100,7 +100,7 @@
       li.innerHTML = `
         <div class="depense-info">
           <span>${c.nom}</span>
-          <span>${c.montant.toFixed(2)} €</span>
+          <span>${c.montant.toFixed(2)} CHF</span>
         </div>
         <button class="btn-supprimer-charge" data-index="${index}">✕</button>
       `;
@@ -118,17 +118,18 @@
 
     const liste = document.getElementById("liste-depenses");
     liste.innerHTML = "";
-    etat.depenses.forEach((d, index) => {
+    for (let index = etat.depenses.length - 1; index >= 0; index--) {
+      const d = etat.depenses[index];
       const li = document.createElement("li");
       li.innerHTML = `
         <div class="depense-info">
           <span>${d.date}</span>
-          <span>${d.montant.toFixed(2)} €</span>
+          <span>${d.montant.toFixed(2)} CHF</span>
         </div>
         <button class="btn-supprimer" data-index="${index}">✕</button>
       `;
       liste.appendChild(li);
-    });
+    }
 
     document.querySelectorAll(".btn-supprimer").forEach(btn => {
       btn.addEventListener("click", () => {
