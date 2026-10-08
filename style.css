@@ -133,7 +133,8 @@
     gap: 12px;
   }
 
-  .btn-supprimer {
+  .btn-supprimer,
+  .btn-supprimer-charge {
     width: auto;
     margin-top: 0;
     padding: 4px 10px;
@@ -141,7 +142,8 @@
     background-color: #444;
   }
 
-  .btn-supprimer:active {
+  .btn-supprimer:active,
+  .btn-supprimer-charge:active {
     background-color: #222;
   }
 

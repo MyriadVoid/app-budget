@@ -1,14 +1,6 @@
  let etat = {
     salaire: 0,
-    charges: [
-      { nom: "Loyer", montant: 585 },
-      { nom: "CSS", montant: 365 },
-      { nom: "Yallo", montant: 33 },
-      { nom: "Unia", montant: 12 },
-      { nom: "Tidal", montant: 15 },
-      { nom: "Internet", montant: 15 },
-      { nom: "Electricité", montant: 11 },
-    ],
+    charges: [],
     epargne: 0,
     depenses: []
   };
@@ -103,10 +95,25 @@
 
     const listeCharges = document.getElementById("liste-charges");
     listeCharges.innerHTML = "";
-    etat.charges.forEach(c => {
+    etat.charges.forEach((c, index) => {
       const li = document.createElement("li");
-      li.innerHTML = `<span>${c.nom}</span><span>${c.montant.toFixed(2)} €</span>`;
+      li.innerHTML = `
+        <div class="depense-info">
+          <span>${c.nom}</span>
+          <span>${c.montant.toFixed(2)} €</span>
+        </div>
+        <button class="btn-supprimer-charge" data-index="${index}">✕</button>
+      `;
       listeCharges.appendChild(li);
+    });
+
+    document.querySelectorAll(".btn-supprimer-charge").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const index = parseInt(btn.dataset.index);
+        etat.charges.splice(index, 1);
+        sauvegarder();
+        mettreAJourAffichage();
+      });
     });
 
     const liste = document.getElementById("liste-depenses");
@@ -163,6 +170,25 @@
     etat.depenses.push({ date: dateStr, montant: montant });
 
     inputDepense.value = "";
+    sauvegarder();
+    mettreAJourAffichage();
+  });
+
+  document.getElementById("btn-ajouter-charge").addEventListener("click", () => {
+    const inputNom = document.getElementById("input-nom-charge");
+    const inputMontant = document.getElementById("input-montant-charge");
+    const nom = inputNom.value.trim();
+    const montant = parseFloat(inputMontant.value);
+
+    if (!nom || isNaN(montant)) {
+      alert("Entre un nom et un montant valides.");
+      return;
+    }
+
+    etat.charges.push({ nom, montant });
+
+    inputNom.value = "";
+    inputMontant.value = "";
     sauvegarder();
     mettreAJourAffichage();
   });

@@ -30,6 +30,17 @@
     <p><strong>Budget du jour : <span id="valeur-budget-jour">0</span> €</strong></p>
   </section>
 
+    <details id="gestion-charges">
+      <summary>Gérer mes charges fixes</summary>
+      <label for="input-nom-charge">Nom de la charge</label>
+      <input type="text" id="input-nom-charge" placeholder="ex: Loyer">
+
+      <label for="input-montant-charge">Montant</label>
+      <input type="number" id="input-montant-charge" placeholder="ex: 800">
+
+      <button id="btn-ajouter-charge">Ajouter la charge</button>
+    </details>
+
     <details id="saisie-mois">
       <summary>Nouveau mois</summary>
       <label for="input-salaire">Salaire reçu</label>
