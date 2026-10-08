@@ -67,6 +67,17 @@ body.light {
     box-shadow: 0 1px 3px var(--card-shadow);
   }
 
+  .grille-onglets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .grille-onglets details {
+    margin-bottom: 0;
+  }
+
   section h2,
   summary {
     font-size: 1rem;

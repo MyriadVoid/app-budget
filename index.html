@@ -56,48 +56,50 @@
     </p>
   </section>
 
-    <details id="gestion-charges">
-      <summary>Gérer mes charges fixes</summary>
-      <label for="input-nom-charge">Nom de la charge</label>
-      <input type="text" id="input-nom-charge" placeholder="ex: Loyer">
-
-      <label for="input-montant-charge">Montant</label>
-      <input type="number" id="input-montant-charge" placeholder="ex: 800">
-
-      <button id="btn-ajouter-charge">Ajouter la charge</button>
-    </details>
-
-    <details id="ajout-epargne">
-      <summary>Ajouter de l'épargne</summary>
-      <label for="input-montant-epargne">Montant mis de côté</label>
-      <input type="number" id="input-montant-epargne" placeholder="ex: 100">
-
-      <button id="btn-ajouter-epargne">Ajouter à l'épargne</button>
-    </details>
-
-    <details id="saisie-mois">
-      <summary>Nouveau mois</summary>
-      <label for="input-salaire">Salaire reçu</label>
-      <input type="number" id="input-salaire" placeholder="ex: 2500">
-
-      <label for="input-epargne">Épargne mise de côté</label>
-      <input type="number" id="input-epargne" placeholder="ex: 300">
-
-      <button id="btn-valider-mois">Valider le mois</button>
-    </details>
-
     <section id="depense-jour">
       <h2>Dépense d'aujourd'hui</h2>
       <input type="number" id="input-depense" placeholder="ex: 12.50">
       <button id="btn-ajouter-depense">Ajouter</button>
     </section>
 
-    <details id="ajustement">
-      <summary>Ajuster selon mon compte</summary>
-      <label for="input-solde-reel">Solde réel sur mon compte</label>
-      <input type="number" id="input-solde-reel" placeholder="ex: 430">
-      <button id="btn-ajuster-solde">Ajuster</button>
-    </details>
+    <div class="grille-onglets">
+      <details id="gestion-charges">
+        <summary>Charges</summary>
+        <label for="input-nom-charge">Nom de la charge</label>
+        <input type="text" id="input-nom-charge" placeholder="ex: Loyer">
+
+        <label for="input-montant-charge">Montant</label>
+        <input type="number" id="input-montant-charge" placeholder="ex: 800">
+
+        <button id="btn-ajouter-charge">Ajouter la charge</button>
+      </details>
+
+      <details id="ajout-epargne">
+        <summary>Épargne</summary>
+        <label for="input-montant-epargne">Montant mis de côté</label>
+        <input type="number" id="input-montant-epargne" placeholder="ex: 100">
+
+        <button id="btn-ajouter-epargne">Ajouter à l'épargne</button>
+      </details>
+
+      <details id="saisie-mois">
+        <summary>Nouveau mois</summary>
+        <label for="input-salaire">Salaire reçu</label>
+        <input type="number" id="input-salaire" placeholder="ex: 2500">
+
+        <label for="input-epargne">Épargne mise de côté</label>
+        <input type="number" id="input-epargne" placeholder="ex: 300">
+
+        <button id="btn-valider-mois">Valider le mois</button>
+      </details>
+
+      <details id="ajustement">
+        <summary>Ajuster</summary>
+        <label for="input-solde-reel">Solde réel sur mon compte</label>
+        <input type="number" id="input-solde-reel" placeholder="ex: 430">
+        <button id="btn-ajuster-solde">Ajuster</button>
+      </details>
+    </div>
 
     <details id="historique">
       <summary>Historique</summary>
