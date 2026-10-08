@@ -203,6 +203,10 @@ body.light {
     border-radius: 8px;
   }
 
+  input[type="date"]:placeholder-shown {
+    color: var(--muted-color);
+  }
+
   button {
     width: 100%;
     padding: 12px;
@@ -230,6 +234,7 @@ body.light {
   #liste-epargne li {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
     padding: 6px 0;
     border-bottom: 1px solid var(--border-subtle);
   }
