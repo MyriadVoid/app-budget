@@ -115,10 +115,6 @@ body.light {
     padding: 4px 20px 4px 0;
   }
 
-  .ligne-budget-jour {
-    font-weight: bold;
-  }
-
   #resume details {
     background: none;
     box-shadow: none;
@@ -163,12 +159,24 @@ body.light {
     transform: translateY(-50%) rotate(180deg);
   }
 
-  #valeur-budget-jour {
-    color: #a78bfa;
-    font-size: 1.2rem;
+  .ligne-budget-jour {
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+    font-size: 1.4rem;
   }
 
-  #valeur-budget-jour.negatif {
+  .ligne-budget-jour .valeur-avec-fleche {
+    font-size: 1.7rem;
+    background: linear-gradient(135deg, #7c3aed, #f97316);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .ligne-budget-jour .valeur-avec-fleche.negatif {
+    background: none;
+    -webkit-text-fill-color: #f87171;
     color: #f87171;
   }
 

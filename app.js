@@ -110,7 +110,7 @@
       valeurAffichee = budgetJour;
     }
     budgetJourEl.textContent = valeurAffichee.toFixed(2);
-    budgetJourEl.classList.toggle("negatif", valeurAffichee < 0);
+    document.getElementById("valeur-budget-jour-wrapper").classList.toggle("negatif", valeurAffichee < 0);
 
     const badgeEl = document.getElementById("badge-budget-depart");
     if (modeBadge === "semaine") {
