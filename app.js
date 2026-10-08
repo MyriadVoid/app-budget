@@ -2,7 +2,8 @@
     salaire: 0,
     charges: [],
     epargnes: [],
-    depenses: []
+    depenses: [],
+    dateFinCycle: null
   };
 
   let modeBadge = localStorage.getItem("budget-mode-badge") || "jour";
@@ -24,6 +25,11 @@
   }
 
   function dateFinCycle() {
+    if (etat.dateFinCycle) {
+      const [annee, mois, jourFin] = etat.dateFinCycle.split("-").map(Number);
+      return new Date(annee, mois - 1, jourFin);
+    }
+
     const aujourdhui = new Date();
     const jour = aujourdhui.getDate();
 
@@ -204,8 +210,11 @@
       return;
     }
 
+    const inputDateFin = document.getElementById("input-date-fin");
+
     etat.salaire = salaire;
     etat.depenses = [];
+    etat.dateFinCycle = inputDateFin.value || null;
 
     sauvegarder();
     mettreAJourAffichage();

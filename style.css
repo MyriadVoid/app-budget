@@ -234,6 +234,13 @@ body.light {
     border-bottom: 1px solid var(--border-subtle);
   }
 
+  #liste-depenses .depense-info,
+  #liste-charges .depense-info,
+  #liste-epargne .depense-info {
+    font-size: 0.85rem;
+    color: var(--muted-color);
+  }
+
   .depense-info {
     display: flex;
     justify-content: space-between;
