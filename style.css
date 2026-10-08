@@ -10,6 +10,7 @@
   --border-subtle: #333;
   --accent-card-bg: #241a33;
   --gradient: linear-gradient(180deg, #7c3aed, #f97316, #ec4899);
+  --gradient-bordure: linear-gradient(180deg, #7c3aed, #ec4899, #f97316);
 }
 
 body.light {
@@ -208,6 +209,15 @@ body.light {
     border-radius: 999px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     z-index: 100;
+  }
+
+  #bordure-ecran {
+    position: fixed;
+    inset: 0;
+    border: 6px solid transparent;
+    border-image: var(--gradient-bordure) 1;
+    pointer-events: none;
+    z-index: 200;
   }
 
   #btn-theme {
