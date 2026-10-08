@@ -103,6 +103,10 @@ body.light {
     padding: 4px 20px 4px 0;
   }
 
+  .ligne-budget-jour {
+    font-weight: bold;
+  }
+
   #resume details {
     background: none;
     box-shadow: none;
