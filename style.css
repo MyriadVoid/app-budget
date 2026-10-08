@@ -1,3 +1,30 @@
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --card-bg: #1a1a1a;
+  --card-shadow: rgba(255, 255, 255, 0.08);
+  --label-color: #bbbbbb;
+  --muted-color: #999999;
+  --input-bg: #2a2a2a;
+  --input-border: #444;
+  --border-subtle: #333;
+  --accent-card-bg: #241a33;
+  --gradient: linear-gradient(180deg, #7c3aed, #f97316, #ec4899);
+}
+
+body.light {
+  --bg-color: #f5f5f5;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --label-color: #555555;
+  --muted-color: #777777;
+  --input-bg: #ffffff;
+  --input-border: #ccc;
+  --border-subtle: #eee;
+  --accent-card-bg: #f3e8ff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,8 +33,8 @@
 
   body {
     font-family: system-ui, sans-serif;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     padding: 16px;
     max-width: 480px;
     margin: 0 auto;
@@ -24,18 +51,18 @@
 
   section,
   details {
-    background-color: #1a1a1a;
+    background-color: var(--card-bg);
     border-radius: 12px;
     padding: 16px;
     margin-bottom: 16px;
-    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.08);
+    box-shadow: 0 1px 3px var(--card-shadow);
   }
 
   section h2,
   summary {
     font-size: 1rem;
     margin-bottom: 12px;
-    color: #bbbbbb;
+    color: var(--label-color);
   }
 
   summary {
@@ -81,16 +108,16 @@
     margin-top: 10px;
     margin-bottom: 4px;
     font-size: 0.9rem;
-    color: #bbbbbb;
+    color: var(--label-color);
   }
 
   input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: #2a2a2a;
-    color: #ffffff;
-    border: 1px solid #444;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
     border-radius: 8px;
   }
 
@@ -99,14 +126,14 @@
     padding: 12px;
     margin-top: 12px;
     font-size: 1rem;
-    background-color: #7c3aed;
+    background: var(--gradient);
     color: white;
     border: none;
     border-radius: 8px;
   }
 
   button:active {
-    background-color: #5b21b6;
+    filter: brightness(0.85);
   }
 
   #liste-depenses,
@@ -119,12 +146,12 @@
     display: flex;
     justify-content: space-between;
     padding: 6px 0;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   #resume h3 {
     font-size: 0.85rem;
-    color: #999999;
+    color: var(--muted-color);
     margin-top: 8px;
   }
 
@@ -139,22 +166,23 @@
     margin-top: 0;
     padding: 4px 10px;
     font-size: 0.9rem;
-    background-color: #444;
+    background: #444;
   }
 
   .btn-supprimer:active,
   .btn-supprimer-charge:active {
-    background-color: #222;
+    background: #222;
   }
 
   #depense-jour {
-    border: 2px solid #7c3aed;
-    background-color: #241a33;
+    border: 2px solid transparent;
+    border-image: var(--gradient) 1;
+    background-color: var(--accent-card-bg);
     padding: 20px;
   }
 
   #depense-jour h2 {
-    color: #ffffff;
+    color: var(--text-color);
     font-size: 1.2rem;
   }
 
@@ -172,10 +200,25 @@
     position: fixed;
     top: 12px;
     right: 12px;
-    background-color: #7c3aed;
+    background: var(--gradient);
     color: #ffffff;
     font-size: 0.75rem;
     font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+
+  #btn-theme {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    width: auto;
+    margin-top: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--input-border);
+    font-size: 1rem;
     padding: 6px 10px;
     border-radius: 999px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);

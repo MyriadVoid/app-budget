@@ -211,5 +211,19 @@
     mettreAJourAffichage();
   });
 
+  function appliquerTheme() {
+    const theme = localStorage.getItem("budget-theme") || "sombre";
+    document.body.classList.toggle("light", theme === "clair");
+    document.getElementById("btn-theme").textContent = theme === "sombre" ? "☀️" : "🌙";
+  }
+
+  document.getElementById("btn-theme").addEventListener("click", () => {
+    const themeActuel = localStorage.getItem("budget-theme") || "sombre";
+    const nouveauTheme = themeActuel === "sombre" ? "clair" : "sombre";
+    localStorage.setItem("budget-theme", nouveauTheme);
+    appliquerTheme();
+  });
+
+  appliquerTheme();
   charger();
   mettreAJourAffichage();
