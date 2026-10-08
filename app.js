@@ -97,11 +97,21 @@
     document.getElementById("valeur-epargne").textContent = totalEpargne().toFixed(2);
     document.getElementById("valeur-reste").textContent = calculerReste().toFixed(2);
     const budgetJour = calculerBudgetJour();
-    const budgetJourEl = document.getElementById("valeur-budget-jour");
-    budgetJourEl.textContent = budgetJour.toFixed(2);
-    budgetJourEl.classList.toggle("negatif", budgetJour < 0);
-
     const budgetDebutJournee = calculerBudgetDebutJournee();
+    const budgetJourEl = document.getElementById("valeur-budget-jour");
+    const labelBudgetEl = document.getElementById("label-budget-jour");
+
+    let valeurAffichee;
+    if (modeBadge === "semaine") {
+      labelBudgetEl.textContent = "Budget de la semaine";
+      valeurAffichee = budgetDebutJournee * 7;
+    } else {
+      labelBudgetEl.textContent = "Budget du jour";
+      valeurAffichee = budgetJour;
+    }
+    budgetJourEl.textContent = valeurAffichee.toFixed(2);
+    budgetJourEl.classList.toggle("negatif", valeurAffichee < 0);
+
     const badgeEl = document.getElementById("badge-budget-depart");
     if (modeBadge === "semaine") {
       badgeEl.textContent = (budgetDebutJournee * 7).toFixed(2) + " CHF / sem.";
