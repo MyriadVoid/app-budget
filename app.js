@@ -224,14 +224,6 @@
     appliquerTheme();
   });
 
-  function verifierScrollBas() {
-    const enBas = window.innerHeight + window.scrollY >= document.body.offsetHeight - 2;
-    document.getElementById("badge-budget-depart").classList.toggle("bas", enBas);
-  }
-
-  window.addEventListener("scroll", verifierScrollBas);
-
   appliquerTheme();
   charger();
   mettreAJourAffichage();
-  verifierScrollBas();

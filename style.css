@@ -127,7 +127,7 @@ body.light {
     padding: 12px;
     margin-top: 12px;
     font-size: 1rem;
-    background: var(--bg-color);
+    background: var(--card-bg);
     color: #7c3aed;
     border: 2px solid #7c3aed;
     border-radius: 8px;
@@ -189,6 +189,7 @@ body.light {
   #depense-jour button {
     font-size: 1.1rem;
     padding: 14px;
+    background: var(--accent-card-bg);
   }
 
   #badge-budget-depart {
@@ -203,11 +204,12 @@ body.light {
     border-radius: 999px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     z-index: 100;
-    transition: background 0.2s ease;
   }
 
-  #badge-budget-depart.bas {
-    background: #f97316;
+  #gestion-charges,
+  #saisie-mois,
+  #ajustement {
+    padding: 8px 16px;
   }
 
   #bordure-ecran {
