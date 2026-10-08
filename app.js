@@ -91,6 +91,12 @@
     return calculerBudgetDebutJournee() - totalDepensesAujourdhui();
   }
 
+  function calculerBudgetSemaine() {
+    const projection = calculerBudgetDebutJournee() * 7;
+    const reste = calculerReste();
+    return Math.min(projection, reste);
+  }
+
   function mettreAJourAffichage() {
     document.getElementById("valeur-salaire").textContent = etat.salaire;
     document.getElementById("valeur-charges").textContent = totalCharges().toFixed(2);
@@ -104,7 +110,7 @@
     let valeurAffichee;
     if (modeBadge === "semaine") {
       labelBudgetEl.textContent = "Budget de la semaine";
-      valeurAffichee = budgetDebutJournee * 7;
+      valeurAffichee = calculerBudgetSemaine();
     } else {
       labelBudgetEl.textContent = "Budget du jour";
       valeurAffichee = budgetJour;
@@ -114,7 +120,7 @@
 
     const badgeEl = document.getElementById("badge-budget-depart");
     if (modeBadge === "semaine") {
-      badgeEl.textContent = (budgetDebutJournee * 7).toFixed(2) + " CHF";
+      badgeEl.textContent = calculerBudgetSemaine().toFixed(2) + " CHF";
     } else {
       badgeEl.textContent = budgetDebutJournee.toFixed(2) + " CHF";
     }
