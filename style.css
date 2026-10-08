@@ -166,6 +166,9 @@ body.light {
   }
 
   .ligne-budget-jour .valeur-avec-fleche {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 0.15em;
     font-size: 1.7rem;
     background: linear-gradient(135deg, #7c3aed, #f97316);
     -webkit-background-clip: text;
