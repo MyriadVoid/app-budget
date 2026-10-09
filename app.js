@@ -327,7 +327,51 @@
     mettreAJourAffichage();
   });
 
+  function afficherSalutation(prenom) {
+    const salutation = document.getElementById("salutation");
+    salutation.textContent = "";
+    salutation.appendChild(document.createTextNode("Bonjour, "));
+    const spanPrenom = document.createElement("span");
+    spanPrenom.className = "prenom";
+    spanPrenom.textContent = prenom;
+    salutation.appendChild(spanPrenom);
+  }
+
+  function initialiserAccueil() {
+    const prenom = localStorage.getItem("budget-prenom");
+    const overlay = document.getElementById("onboarding-overlay");
+    if (prenom) {
+      overlay.classList.add("cache");
+      afficherSalutation(prenom);
+    } else {
+      overlay.classList.remove("cache");
+    }
+  }
+
+  function validerPrenom() {
+    const input = document.getElementById("input-prenom");
+    const prenom = input.value.trim();
+
+    if (!prenom) {
+      alert("Entre ton prénom.");
+      return;
+    }
+
+    localStorage.setItem("budget-prenom", prenom);
+    document.getElementById("onboarding-overlay").classList.add("cache");
+    afficherSalutation(prenom);
+  }
+
+  document.getElementById("btn-valider-prenom").addEventListener("click", validerPrenom);
+
+  document.getElementById("input-prenom").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      validerPrenom();
+    }
+  });
+
   appliquerTheme();
   appliquerPalette();
+  initialiserAccueil();
   charger();
   mettreAJourAffichage();

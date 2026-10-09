@@ -65,6 +65,76 @@ body.theme-ocean.light {
     margin-bottom: 20px;
   }
 
+  #salutation {
+    text-align: center;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 12px;
+  }
+
+  #salutation:empty {
+    display: none;
+  }
+
+  #salutation .prenom {
+    background: var(--gradient-diag);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #onboarding-overlay {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 24px;
+  }
+
+  #onboarding-overlay.cache {
+    display: none;
+  }
+
+  #onboarding-contenu {
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  #onboarding-texte {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+
+  #onboarding-texte .points {
+    background: var(--gradient-diag);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
+  #onboarding-overlay input {
+    background: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+  }
+
+  #onboarding-overlay button {
+    background: #ffffff;
+    color: var(--accent-1);
+    border: 2px solid var(--accent-1);
+  }
+
   header h1 {
     font-family: 'Caveat', cursive;
     font-weight: 700;
