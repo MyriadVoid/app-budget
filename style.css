@@ -409,6 +409,19 @@ body.theme-ocean.light {
     z-index: 100;
   }
 
+  @keyframes scintillement {
+    0%, 100% {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 0 0 0 rgba(var(--accent-1-rgb), 0.6);
+    }
+    50% {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 0 0 10px rgba(var(--accent-1-rgb), 0);
+    }
+  }
+
+  #badge-budget-depart.scintille {
+    animation: scintillement 1.5s ease-in-out infinite;
+  }
+
   #gestion-charges,
   #ajout-epargne,
   #saisie-mois,

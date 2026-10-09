@@ -202,6 +202,8 @@
         mettreAJourAffichage();
       });
     });
+
+    mettreAJourScintillement();
   }
 
    document.getElementById("btn-valider-mois").addEventListener("click", () => {
@@ -216,6 +218,8 @@
     etat.salaire = salaire;
     etat.depenses = [];
     etat.dateFinCycle = inputDateFin.value;
+
+    localStorage.setItem("budget-action-faite", "oui");
 
     sauvegarder();
     mettreAJourAffichage();
@@ -288,6 +292,8 @@
     etat.depenses.push({ date: `Ajustement (${dateStr})`, montant: correction });
 
     inputSolde.value = "";
+    localStorage.setItem("budget-action-faite", "oui");
+
     sauvegarder();
     mettreAJourAffichage();
   });
@@ -324,8 +330,15 @@
   document.getElementById("badge-budget-depart").addEventListener("click", () => {
     modeBadge = modeBadge === "jour" ? "semaine" : "jour";
     localStorage.setItem("budget-mode-badge", modeBadge);
+    localStorage.setItem("budget-badge-vu", "oui");
     mettreAJourAffichage();
   });
+
+  function mettreAJourScintillement() {
+    const actionFaite = localStorage.getItem("budget-action-faite") === "oui";
+    const badgeVu = localStorage.getItem("budget-badge-vu") === "oui";
+    document.getElementById("badge-budget-depart").classList.toggle("scintille", actionFaite && !badgeVu);
+  }
 
   function afficherSalutation(prenom) {
     const salutation = document.getElementById("salutation");
